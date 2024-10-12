@@ -1,0 +1,91 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+	<PropertyGroup>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+		<NoWarn>$(NoWarn);CA1716;</NoWarn>
+	</PropertyGroup>
+	<ItemGroup Condition="'$(UseProjectReference)' == 'true'">
+		<ProjectReference Include="$(HexalithPath)src\Core\Infrastructure\Hexalith.Infrastructure.ClientApp\Hexalith.Infrastructure.ClientApp.csproj" />
+		<ProjectReference Include="$(HexalithPath)src\Core\UI\Hexalith.UI.Components\Hexalith.UI.Components.csproj" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(UseProjectReference)' != 'true'">
+		<PackageReference Include="Hexalith.Infrastructure.ClientApp" Version="$(HexalithVersion)" />
+		<PackageReference Include="Hexalith.UI.Components" Version="$(HexalithVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Application\Hexalith.Contacts.Application\Hexalith.Contacts.Application.csproj" />
+	  <ProjectReference Include="..\..\Application\Hexalith.Contacts.Commands\Hexalith.Contacts.Commands.csproj" />
+	  <ProjectReference Include="..\..\Domain\Hexalith.Contacts.Domain\Hexalith.Contacts.Domain.csproj" />
+	  <ProjectReference Include="..\..\Domain\Hexalith.Contacts.Events\Hexalith.Contacts.Events.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Localization\ContactConstructionSiteResource.fr-FR.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>ContactConstructionSiteResource.fr-FR.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Localization\ContactElementResource.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>ContactElementResource.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Modules\ContactMenu.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>ContactMenu.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Contacts\Components\ContactAutocomplete.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>ContactAutocomplete.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Contacts\Components\ContactSummaryGrid.Designer.cs">
+	    <DependentUpon>ContactSummaryGrid.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Resources\Contacts\Pages\ContactAdd.Designer.cs">
+	    <DependentUpon>ContactAdd.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Resources\Contacts\Pages\ContactDetails.Designer.cs">
+	    <DependentUpon>ContactDetails.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Resources\Contacts\Pages\ContactIndex.Designer.cs">
+	    <DependentUpon>ContactIndex.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\Modules\ContactMenu.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>ContactMenu.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Contacts\Components\ContactAutocomplete.resx">
+	    <LastGenOutput>ContactAutocomplete.Designer.cs</LastGenOutput>
+	    <Generator>ResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Contacts\Components\ContactSummaryGrid.resx">
+	    <LastGenOutput>ContactSummaryGrid.Designer.cs</LastGenOutput>
+	    <Generator>ResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Contacts\Pages\ContactAdd.resx">
+	    <LastGenOutput>ContactAdd.Designer.cs</LastGenOutput>
+	    <Generator>ResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Contacts\Pages\ContactDetails.resx">
+	    <LastGenOutput>ContactDetails.Designer.cs</LastGenOutput>
+	    <Generator>ResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Contacts\Pages\ContactIndex.resx">
+	    <LastGenOutput>ContactIndex.Designer.cs</LastGenOutput>
+	    <Generator>ResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="wwwroot\fontawesome\" />
+	</ItemGroup>
+</Project>

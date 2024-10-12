@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsAspireHost>true</IsAspireHost>
+		<UserSecretsId>a5209629-9ce0-4285-b6e5-388294ac5d4d</UserSecretsId>
+	</PropertyGroup>
+	<ItemGroup Condition="'$(UseProjectReference)' == 'true'">
+		<ProjectReference Include="$(HexalithPath)\src\Core\Infrastructure\Hexalith.Infrastructure.AspireService.Hosting\Hexalith.Infrastructure.AspireService.Hosting.csproj" IsAspireProjectResource="false" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(UseProjectReference)' != 'true'">
+		<PackageReference Include="Hexalith.Infrastructure.AspireService.Hosting" Version="$(HexalithVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.1" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\HexalithApp\src\HexalithApp.Server\HexalithApp.Server.csproj" />
+	</ItemGroup>
+</Project>

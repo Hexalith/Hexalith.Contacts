@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+		<NoWarn>$(NoWarn);S2333;</NoWarn>
+	</PropertyGroup>
+	<ItemGroup Condition="'$(UseProjectReference)' == 'true'">
+		<ProjectReference Include="$(HexalithPath)\src\Core\Common\Hexalith.PolymorphicSerialization\Hexalith.PolymorphicSerialization.csproj" />
+		<ProjectReference Include="..\..\..\Hexalith\src\Core\CodeGenerators\Hexalith.CodeGenerators.SerializationMappers\Hexalith.CodeGenerators.SerializationMappers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(UseProjectReference)' != 'true'">
+		<PackageReference Include="Hexalith.PolymorphicSerialization" Version="$(HexalithVersion)" />
+		<PackageReference Include="Hexalith.CodeGenerators.SerializationMappers" Version="$(HexalithVersion)" PrivateAssets="true" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Hexalith.Contacts.Domain.Abstractions\Hexalith.Contacts.Domain.Abstractions.csproj" />
+	</ItemGroup>
+</Project>

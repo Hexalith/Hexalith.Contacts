@@ -1,0 +1,33 @@
+﻿@inject Services.IContactQueryService ContactQueryService;
+@inject IStringLocalizer<ContactSummaryGrid> L;
+@inject NavigationManager NavigationManager;
+@using Labels = Resources.Contacts.Components.ContactSummaryGrid
+
+@if (elements is not null)
+{
+	<FluentDataGrid GenerateHeader="GenerateHeaderOption.Sticky"
+					Items="@elements"
+					ResizableColumns="true"
+					ShowHover="true"
+					OnRowDoubleClick="@((FluentDataGridRow<ViewModels.ContactSummary> row) => HandleRowDoubleClick(row))">
+		<PropertyColumn Title="@Labels.Id" Property="@(p => p.Id)" Sortable="true" />
+		<PropertyColumn Title="@Labels.Name" Property="@(p => p.Name)" Sortable="true" />
+		<TemplateColumn Title="@Labels.Disabled">
+			<FluentCheckbox Value="@(context.Disabled)"/>
+		</TemplateColumn>
+	</FluentDataGrid>
+}
+
+@code {
+	protected override async Task OnInitializedAsync()
+	{
+		elements = (await ContactQueryService.GetSummariesAsync()).AsQueryable();
+	}
+	IQueryable<ViewModels.ContactSummary>? elements = null;
+	private Task HandleRowDoubleClick(FluentDataGridRow<ViewModels.ContactSummary> row)
+	{
+		if (row.Item is not null && !string.IsNullOrEmpty(row.Item.Id))
+			NavigationManager.NavigateTo($"/Contact/Contact/{row.Item.Id}");
+		return Task.CompletedTask;
+	}
+}

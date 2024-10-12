@@ -1,0 +1,42 @@
+﻿@using Hexalith.UI.Components
+@inject IServiceProvider ServiceProvider
+@using Labels = Hexalith.Contacts.Shared.Resources.Contacts.Components.ContactAutocomplete
+@using Microsoft.Extensions.DependencyInjection
+
+<HexAutocomplete Width="100%"
+                 Label="@(Label ?? Labels.Label)"
+                 Placeholder="@(Placeholder ?? Labels.Placeholder)"
+                 Id="@Id"
+                 IdChanged="OnIdChanged"
+                 Service="AutocompleteService" />
+
+@code
+{
+    [Parameter]
+    public IIdDescriptionService? Service { get; set; }
+
+    public IIdDescriptionService? _autocompleteService;
+    public IIdDescriptionService AutocompleteService 
+        => Service ?? (_autocompleteService ??= ServiceProvider.GetRequiredService<Services.IContactQueryService>());
+
+    [Parameter]
+    public string? Id { get; set; }
+
+    [Parameter]
+    public EventCallback<string?> IdChanged { get; set; }
+
+    [Parameter]
+    public string? Width { get; set; }
+
+    [Parameter]
+    public string? Label { get; set; }
+
+    [Parameter]
+    public string? Placeholder { get; set; }
+
+    private async Task OnIdChanged(string? id)
+	{
+		await IdChanged.InvokeAsync(id);
+	}
+
+}

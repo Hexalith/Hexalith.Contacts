@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+	<PropertyGroup>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
+		<ProjectReference Include="$(HexalithPath)src\Core\Infrastructure\Hexalith.Infrastructure.ClientAppOnServer\Hexalith.Infrastructure.ClientAppOnServer.csproj" />
+		<ProjectReference Include="$(HexalithPath)\src\Core\Application\Hexalith.Application.Organizations\Hexalith.Application.Organizations.csproj" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(BuildingInsideVisualStudio)' != 'true' and '$(BuildingByReSharper)' != 'true'">
+		<PackageReference Include="Hexalith.Application.Organizations" Version="$(HexalithVersion)" />
+		<PackageReference Include="Hexalith.Infrastructure.ClientAppOnServer" Version="$(HexalithVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Selenium.Support" Version="4.22.0" />
+	  <PackageReference Include="Selenium.WebDriver" Version="4.22.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Hexalith\src\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.CosmosDatabases\Hexalith.Infrastructure.DaprRuntime.CosmosDatabases.csproj" />
+	  <ProjectReference Include="..\..\Domain\Manhole.Domain.Abstractions\Manhole.Domain.Abstractions.csproj" />
+	  <ProjectReference Include="..\..\Domain\Manhole.Domain\Manhole.Domain.csproj" />
+	  <ProjectReference Include="..\Manhole.Shared\Manhole.Shared.csproj" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,23 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: contactstatestore
+spec:
+  type: state.azure.cosmosdb
+  version: v1
+  metadata:
+  - name: url
+    value: "https://ffy-project.documents.azure.com:443/"
+  - name: masterKey
+    secretKeyRef:
+      name: "StateStore:Password"
+      key: "StateStore:Password"
+  - name: database
+    value: staging
+  - name: collection
+    value: contact
+  - name: actorStateStore
+    value: "true"
+auth:
+  secretStore: secretstore
+

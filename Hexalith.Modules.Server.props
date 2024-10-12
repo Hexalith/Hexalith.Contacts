@@ -1,0 +1,17 @@
+<Project>
+	<PropertyGroup>
+		<HexalithModulesServerProps>$([MSBuild]::GetPathOfFileAbove('Hexalith.Modules.Server.props', '$(MSBuildThisFileDirectory)..'))</HexalithModulesServerProps>
+	</PropertyGroup>
+	<Import Project="$(HexalithModulesServerProps)" Condition=" '$(HexalithModulesServerProps)' != '' " />
+	<ItemGroup Condition="'$(UseProjectReference)' == 'true'">
+		<ProjectReference Include="$(HexalithEasyAuthenticationPath)\src\Modules\Hexalith.EasyAuthentication.Server\Hexalith.EasyAuthentication.Server.csproj" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(UseProjectReference)' != 'true'">
+		<PackageReference Include="Hexalith.EasyAuthentication.Server" Version="$(HexalithEasyAuthenticationVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Include="$(MSBuildThisFileDirectory)src/ServerApplication.cs" />
+		<ProjectReference Include="$(HexalithContactPath)\src\Modules\Hexalith.Contacts.Client\Hexalith.Contacts.Client.csproj" />
+		<ProjectReference Include="$(HexalithContactPath)\src\Modules\Hexalith.Contacts.Server\Hexalith.Contacts.Server.csproj" />
+	</ItemGroup>
+</Project>

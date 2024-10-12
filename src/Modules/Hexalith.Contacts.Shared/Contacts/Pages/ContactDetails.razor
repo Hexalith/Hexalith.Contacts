@@ -1,0 +1,60 @@
+﻿@page "/Contact/Contact/{ContactId}"
+@inject Services.IContactQueryService ContactQueryService
+@inject NavigationManager NavigationManager
+@inject IStringLocalizer<ContactDetails> L
+@inject IClientCommandService CommandService
+@using Hexalith.Infrastructure.ClientApp.Services
+@using Labels = Hexalith.Contacts.Shared.Resources.Contacts.Pages.ContactDetails;
+@using Hexalith.Contacts.Commands
+
+<FluentStack Orientation="Orientation.Vertical" Style="padding:20px;">
+	<h3>@L[Labels.Title, ContactId]</h3>
+	@if (data is not null)
+	{
+		<FluentStack Orientation="Orientation.Vertical">
+			<FluentStack Orientation="Orientation.Vertical">
+				<FluentTextField @bind-Value="data.Name" Label="@Labels.Name"></FluentTextField>
+				<FluentTextField @bind-Value="@data.Description" Label="@Labels.Description"></FluentTextField>
+				<FluentCheckbox @bind-Value="@data.Disabled" Label="@Labels.Disabled"></FluentCheckbox>
+			</FluentStack>
+			<FluentSpacer />
+			<FluentButton Appearance="Appearance.Accent" Disabled="@(!data.HasChanges)" IconStart="@(new Icons.Regular.Size24.Save())" OnClick="OnSave">@Labels.Save</FluentButton>
+		</FluentStack>
+	}
+</FluentStack>
+
+@code {
+	[Parameter]
+	public string ContactId { get; set; } = string.Empty;
+
+
+	protected override async Task OnInitializedAsync()
+	{
+		if (string.IsNullOrWhiteSpace(ContactId))
+		{
+			data = null;
+			return;
+		}
+		data = new ( await ContactQueryService.GetDetailsAsync(ContactId));
+	}
+
+	ViewModels.ContactEdit? data = null;
+
+	public async Task OnSave()
+	{
+		if (data is null)
+		{
+			return;
+		}
+		if (data.Name == data.Original.Name || data.Description != data.Original.Description)
+		{
+			await CommandService.SendCommandAsync(new ChangeContactDescription(data.Id, data.Name, data.Description), CancellationToken.None);
+		}
+		if (data.Disabled == data.Original?.Disabled)
+		{
+			await CommandService.SendCommandAsync(new DisableContact(data.Id), CancellationToken.None);
+		}
+		NavigationManager.NavigateTo("/Contact/Contact");
+	}
+
+}

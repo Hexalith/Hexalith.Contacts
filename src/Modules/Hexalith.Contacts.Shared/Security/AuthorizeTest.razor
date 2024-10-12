@@ -1,0 +1,42 @@
+﻿@page "/Contact/AuthorizeTest"
+@attribute [Authorize]
+
+@using System.Security.Claims
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<h3>Vous êtes autorisé.</h3>
+
+@if (_user is not null)
+{
+	if (_user.Identity is not null)
+	{
+		<p>Authentifié : @_user.Identity.IsAuthenticated</p>
+		<p>Nom : @_user.Identity.Name</p>
+		<p>Authentication type : @_user.Identity.AuthenticationType</p>
+	}
+	@if (_user.Claims.Count() > 0)
+	{
+		<h3>User claims</h3>
+		<ul>
+			@foreach (var claim in _user.Claims)
+			{
+				<li>@claim.Type: @claim.Value</li>
+			}
+		</ul>
+	}
+}
+@code {
+	private string? authMessage;
+	private string? surname;
+	private IEnumerable<Claim> claims = Enumerable.Empty<Claim>();
+	private ClaimsPrincipal? _user;
+
+	protected override async Task OnInitializedAsync()
+	{
+		var authState = await AuthenticationStateProvider
+			.GetAuthenticationStateAsync();
+		_user = authState.User;
+
+		await base.OnInitializedAsync();
+	}
+}

@@ -1,0 +1,20 @@
+﻿@page "/Contact/Contact"
+@inject NavigationManager NavigationManager;
+@using Labels = Hexalith.Contacts.Shared.Resources.Contacts.Pages.ContactIndex;
+@using Hexalith.Contacts.Shared.Contacts.Components
+<FluentToolbar Style="width:100%;">
+    <FluentButton IconStart="@(new Icons.Filled.Size16.Add())" OnClick="AddAsync">@Labels.Add</FluentButton>
+</FluentToolbar>
+
+<FluentStack Orientation="Orientation.Vertical">
+    <h3>@Labels.Title</h3>
+    <ContactSummaryGrid/>
+</FluentStack>
+
+@code {
+
+    private void AddAsync()
+	{
+		NavigationManager.NavigateTo("/Contact/Contact/Add");
+	}
+}
