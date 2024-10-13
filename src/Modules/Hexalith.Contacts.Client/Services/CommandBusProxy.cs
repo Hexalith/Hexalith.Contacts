@@ -36,29 +36,23 @@ public class CommandBusProxy : ICommandBus
 
     /// <inheritdoc/>
     /// <exception cref="NotImplementedException">This method is not implemented.</exception>
-    public async Task PublishAsync(IEnvelope<BaseCommand, BaseMetadata> envelope, CancellationToken cancellationToken)
-    {
-        await PublishAsync(
+    public async Task PublishAsync(IEnvelope<BaseCommand, BaseMetadata> envelope, CancellationToken cancellationToken) => await PublishAsync(
                 new CommandState(
                     _timeProvider.GetLocalNow(),
                     (envelope ?? throw new ArgumentNullException(nameof(envelope))).Message,
                     envelope.Metadata),
                 cancellationToken)
             .ConfigureAwait(false);
-    }
 
     /// <inheritdoc/>
     /// <exception cref="NotImplementedException">This method is not implemented.</exception>
-    public async Task PublishAsync(BaseCommand command, BaseMetadata metadata, CancellationToken cancellationToken)
-    {
-        await PublishAsync(
+    public async Task PublishAsync(BaseCommand command, BaseMetadata metadata, CancellationToken cancellationToken) => await PublishAsync(
                 new CommandState(
                     _timeProvider.GetLocalNow(),
                     command,
                     metadata),
                 cancellationToken)
             .ConfigureAwait(false);
-    }
 
     /// <inheritdoc/>
     public async Task PublishAsync(CommandState commandState, CancellationToken cancellationToken)
@@ -73,7 +67,7 @@ public class CommandBusProxy : ICommandBus
     public async Task PublishAsync(object command, Hexalith.Application.MessageMetadatas.Metadata metadata, CancellationToken cancellationToken)
     {
         HttpResponseMessage response = await _httpClient
-            .PostAsJsonAsync("/api/command/publish", new Hexalith.Application.MessageMetadatas.MessageState(command, metadata), cancellationToken)
+            .PostAsJsonAsync("/api/command/publish", Hexalith.Application.MessageMetadatas.MessageState.Create(command, metadata), cancellationToken)
             .ConfigureAwait(false);
         _ = response.EnsureSuccessStatusCode();
     }

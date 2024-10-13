@@ -7,7 +7,7 @@ using FluentAssertions;
 
 using Hexalith.Application.MessageMetadatas;
 using Hexalith.Contacts.Commands;
-using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
+using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.PolymorphicSerialization;
 
 public class AddContactTest
