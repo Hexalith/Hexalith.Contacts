@@ -1,10 +1,4 @@
-﻿// <copyright file="ContactConstructionSiteSharedModule.cs" company="Fiveforty SAS Paris France">
-//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
-// </copyright>
-
-namespace Hexalith.Contacts.Shared.Modules;
+﻿namespace Hexalith.Contacts.Shared.Modules;
 
 using System.Collections.Generic;
 using System.Reflection;
@@ -20,6 +14,7 @@ using Hexalith.UI.Components.Icons;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
 /// <summary>
 /// The contact construction site shared module.
 /// </summary>
