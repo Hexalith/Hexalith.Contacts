@@ -77,6 +77,6 @@ jobs:
       run: |
         az containerapp update \
           --name int-contact \
-          --resource-group ffy-integration \
+          --resource-group hex-integration \
           --image ${{ vars.AZURE_REGISTRY }}/contact:${{ env.VERSION }}
  

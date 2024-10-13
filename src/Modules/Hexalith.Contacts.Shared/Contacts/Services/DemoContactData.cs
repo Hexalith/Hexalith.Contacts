@@ -6,7 +6,7 @@ using Hexalith.Contacts.Shared.Contacts.ViewModels;
 /// <summary>
 /// Provides demo contact data for testing and demonstration purposes.
 /// </summary>
-internal static class DemoContactData
+public static class DemoContactData
 {
     /// <summary>
     /// Gets a demo contact for PJ (Piquot Jérôme).

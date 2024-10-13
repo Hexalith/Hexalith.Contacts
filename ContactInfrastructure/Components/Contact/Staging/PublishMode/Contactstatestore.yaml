@@ -7,7 +7,7 @@ spec:
   version: v1
   metadata:
   - name: url
-    value: "https://ffy-project.documents.azure.com:443/"
+    value: "https://hex-project.documents.azure.com:443/"
   - name: database
     value: staging
   - name: collection

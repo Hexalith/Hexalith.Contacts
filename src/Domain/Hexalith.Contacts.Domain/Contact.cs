@@ -16,7 +16,7 @@ using Hexalith.Domain.Aggregates;
 public record Contact(
     [property: DataMember(Order = 1)] string Id,
     [property: DataMember(Order = 2)] string Name,
-    [property: DataMember(Order = 3)] string? Description,
+    [property: DataMember(Order = 3)] string? Comments,
     [property: DataMember(Order = 4)] Person Person,
     [property: DataMember(Order = 5)] IEnumerable<ContactPoint> ContactPoints,
     [property: DataMember(Order = 6)] bool Disabled) : IDomainAggregate
@@ -165,10 +165,10 @@ public record Contact(
     /// </summary>
     /// <param name="e">The ContactDescriptionChanged event.</param>
     /// <returns>ApplyResult.</returns>
-    private ApplyResult ApplyEvent(ContactDescriptionChanged e) => Description == e.Description && Name == e.Name
+    private ApplyResult ApplyEvent(ContactDescriptionChanged e) => Comments == e.Comments && Name == e.Name
             ? new ApplyResult(this, [], true)
             : new ApplyResult(
-            this with { Description = e.Description, Name = e.Name },
+            this with { Comments = e.Comments, Name = e.Name },
             [e],
             false);
 

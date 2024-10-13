@@ -5,9 +5,9 @@
 /// </summary>
 /// <remarks>
 /// This class extends the MemoryContactQueryService and initializes it with demo data,
-/// making it useful for testing, demonstrations, or development scenarios where a 
+/// making it useful for testing, demonstrations, or development scenarios where a
 /// fully functional backend is not required.
 /// </remarks>
-public class DemoContactQueryService(DemoContactData.Data data) : MemoryContactQueryService(data)
+public class DemoContactQueryService() : MemoryContactQueryService(DemoContactData.Data)
 {
 }

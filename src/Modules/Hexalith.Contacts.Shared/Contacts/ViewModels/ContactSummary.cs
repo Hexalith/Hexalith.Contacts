@@ -28,7 +28,7 @@ public record ContactSummary(
         : this(
               (details ?? throw new ArgumentNullException(nameof(details))).Id,
               details.Name,
-              details.ContactPoints.GetEmail(),
+              details.ContactPoints.GetPhone(),
               details.ContactPoints.GetMobile(),
               details.ContactPoints.GetEmail(),
               details.Disabled)

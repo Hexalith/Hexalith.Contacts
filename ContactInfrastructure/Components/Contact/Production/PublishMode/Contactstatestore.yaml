@@ -7,7 +7,7 @@ spec:
   version: v1
   metadata:
   - name: url
-    value: "https://ffy-production-cosmos.documents.azure.com:443/"
+    value: "https://hex-production-cosmos.documents.azure.com:443/"
   - name: masterKey
     secretKeyRef:
       name: "StateStore:Password"

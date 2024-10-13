@@ -11,12 +11,33 @@
 	<h3>@Labels.Title</h3>
 	@if (data is not null)
 	{
-		<FluentStack Orientation="Orientation.Vertical">
-			<FluentStack Orientation="Orientation.Vertical">
-				<FluentTextField @bind-Value="data.Id" Label="@Labels.Id"></FluentTextField>
-				<FluentTextField @bind-Value="data.Name" Label="@Labels.Name"></FluentTextField>
-				<FluentTextField @bind-Value="data.Description" Label="@Labels.Description"></FluentTextField>
-			</FluentStack>
+		<FluentStack Width="100%" Style="padding:15px" Orientation="Orientation.Vertical">
+			<FluentGrid Style="width:100%">
+				<FluentGridItem xs="12" sm="12" lg="3">
+					<FluentTextField Style="width:100%;" @bind-Value="data.Id" Label="@Labels.Id"></FluentTextField>
+				</FluentGridItem>
+				<FluentGridItem xs="12" sm="6" lg="3">
+					<FluentTextField Style="width:100%;" @bind-Value="data.FirstName" Label="@Labels.FirstName"></FluentTextField>
+				</FluentGridItem>
+				<FluentGridItem xs="12" sm="6" lg="3">
+					<FluentTextField Style="width:100%;" @bind-Value="data.LastName" Label="@Labels.LastName"></FluentTextField>
+				</FluentGridItem>
+				<FluentGridItem xs="12" sm="12" lg="3">
+					<FluentTextField Style="width:100%;" Value="@data.Name" ValueChanged="OnNameChange" Label="@Labels.Name" @onfocusin="OnNameFocus"></FluentTextField>
+				</FluentGridItem>
+				<FluentGridItem xs="12" sm="4" lg="4">
+					<FluentTextField Style="width:100%;" @bind-Value="data.Phone" Label="@Labels.Phone"></FluentTextField>
+				</FluentGridItem>
+				<FluentGridItem xs="12" sm="4" lg="4">
+					<FluentTextField Style="width:100%;" @bind-Value="data.Mobile" Label="@Labels.Mobile"></FluentTextField>
+				</FluentGridItem>
+				<FluentGridItem xs="12" sm="4" lg="4">
+					<FluentTextField Style="width:100%;" @bind-Value="data.Email" Label="@Labels.Email"></FluentTextField>
+				</FluentGridItem>
+				<FluentGridItem xs="12" sm="12" lg="12">
+					<FluentTextArea Style="width:100%;" @bind-Value="data.Comments" Label="@Labels.Comments"></FluentTextArea>
+				</FluentGridItem>
+			</FluentGrid>
 			<FluentSpacer />
 			<FluentButton Appearance="Appearance.Accent" IconStart="@(new Icons.Regular.Size24.Save())" OnClick="OnSave">@Labels.Save</FluentButton>
 		</FluentStack>
@@ -28,7 +49,39 @@
 
 	public async Task OnSave()
 	{
-			await CommandService.SendCommandAsync(new Hexalith.Contacts.Commands.AddContact(data.Id, data.Name, data.Description, new Contact.Domain.ValueObjects.Person()), CancellationToken.None);
+		await CommandService.SendCommandAsync(new Hexalith.Contacts.Commands.AddContact(
+				data.Id,
+				data.Name,
+				data.Comments,
+				new Contact.Domain.ValueObjects.Person(
+					data.Name,
+					data.FirstName,
+					data.LastName, null,
+					Contact.Domain.ValueObjects.Gender.Undefined)),
+			CancellationToken.None);
 		NavigationManager.NavigateTo("/Contact/Contact");
+	}
+
+	private Task OnNameFocus(FocusEventArgs args)
+	{
+		if (string.IsNullOrWhiteSpace(data.Name))
+		{
+			data.Name = $"{data.FirstName.Trim()} {data.LastName.Trim()}";
+		}
+		StateHasChanged();
+		return Task.CompletedTask;
+	}
+
+	private Task OnNameChange(string? value)
+	{
+		if (string.IsNullOrWhiteSpace(value as string))
+		{
+			data.Name = $"{data.FirstName.Trim()} {data.LastName.Trim()}";
+		}
+		else
+		{
+			data.Name = value;
+		}
+		return Task.CompletedTask;
 	}
 }

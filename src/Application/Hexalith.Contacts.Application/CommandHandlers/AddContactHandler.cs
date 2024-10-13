@@ -16,7 +16,7 @@ public class AddContactHandler : DomainCommandHandler<AddContact>
     public override Task<ExecuteCommandResult> DoAsync(AddContact command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        ContactAdded ev = new(command.Id, command.Name, command.Description, command.Person);
+        ContactAdded ev = new(command.Id, command.Name, command.Comments, command.Person);
         if (aggregate is null)
         {
             return Task.FromResult(new ExecuteCommandResult(new Contact(ev), [ev], [ev]));

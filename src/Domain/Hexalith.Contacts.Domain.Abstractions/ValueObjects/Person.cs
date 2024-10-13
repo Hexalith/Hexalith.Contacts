@@ -25,7 +25,7 @@ public record Person(
     /// <summary>
     /// The birth date of the person.
     /// </summary>
-    [property: DataMember(Order = 4)] DateOnly BirthDate,
+    [property: DataMember(Order = 4)] DateOnly? BirthDate,
 
     /// <summary>
     /// The gender of the person.
