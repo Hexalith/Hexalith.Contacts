@@ -70,7 +70,7 @@ namespace Hexalith.Contacts.Shared.Resources.Contacts.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Warehouses.
+        ///   Looks up a localized string similar to Contacts.
         /// </summary>
         internal static string Title {
             get {

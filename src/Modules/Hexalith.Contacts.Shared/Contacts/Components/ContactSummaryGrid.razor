@@ -12,6 +12,9 @@
 					OnRowDoubleClick="@((FluentDataGridRow<ViewModels.ContactSummary> row) => HandleRowDoubleClick(row))">
 		<PropertyColumn Title="@Labels.Id" Property="@(p => p.Id)" Sortable="true" />
 		<PropertyColumn Title="@Labels.Name" Property="@(p => p.Name)" Sortable="true" />
+		<PropertyColumn Title="@Labels.Phone" Property="@(p => p.Phone)" Sortable="true" />
+		<PropertyColumn Title="@Labels.Mobile" Property="@(p => p.Mobile)" Sortable="true" />
+		<PropertyColumn Title="@Labels.Email" Property="@(p => p.Email)" Sortable="true" />
 		<TemplateColumn Title="@Labels.Disabled">
 			<FluentCheckbox Value="@(context.Disabled)"/>
 		</TemplateColumn>

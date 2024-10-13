@@ -33,10 +33,19 @@ public enum ContactPointType
     /// Represents a phone number contact point.
     /// </summary>
     /// <remarks>
-    /// This can include various types of phone numbers such as mobile, landline, or work numbers.
+    /// This can include various types of phone numbers such as landline or work numbers.
     /// Example: +1 (555) 123-4567.
     /// </remarks>
     Phone = 1,
+
+    /// <summary>
+    /// Represents a mobile phone number contact point.
+    /// </summary>
+    /// <remarks>
+    /// This is specifically used for mobile or cellular phone numbers.
+    /// Example: +1 (555) 987-6543.
+    /// </remarks>
+    Mobile = 2,
 
     /// <summary>
     /// Represents an email address contact point.
@@ -45,7 +54,7 @@ public enum ContactPointType
     /// This is used for electronic mail addresses.
     /// Example: "example@email.com"
     /// </remarks>
-    Email = 2,
+    Email = 3,
 
     /// <summary>
     /// Represents a postal address contact point.
@@ -54,7 +63,7 @@ public enum ContactPointType
     /// This is used for physical mailing addresses.
     /// Example: "123 Main St, Anytown, ST 12345, Country".
     /// </remarks>
-    PostalAddress = 3,
+    PostalAddress = 4,
 
     /// <summary>
     /// Represents a social media contact point.
@@ -63,7 +72,7 @@ public enum ContactPointType
     /// This can include various social media platforms such as Twitter, Facebook, LinkedIn, etc.
     /// Example: "@username" or "https://www.linkedin.com/in/username".
     /// </remarks>
-    SocialMedia = 4,
+    SocialMedia = 5,
 
     /// <summary>
     /// Represents any other type of contact point not covered by the specific categories.

@@ -61,7 +61,7 @@ namespace Hexalith.Contacts.Shared.Resources.Contacts.Components {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Warehouse.
+        ///   Looks up a localized string similar to Contact.
         /// </summary>
         internal static string Label {
             get {
@@ -70,7 +70,7 @@ namespace Hexalith.Contacts.Shared.Resources.Contacts.Components {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select a warehouse.
+        ///   Looks up a localized string similar to Select a contact.
         /// </summary>
         internal static string Placeholder {
             get {

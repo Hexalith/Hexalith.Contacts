@@ -24,7 +24,7 @@ public class SharedApplication : HexalithSharedApplication
     public override string LogoutPath => "/.auth/logout";
 
     /// <inheritdoc/>
-    public override string Name => "Regards";
+    public override string Name => "Contacts";
 
     /// <inheritdoc/>
     public override IEnumerable<Type> SharedModules =>

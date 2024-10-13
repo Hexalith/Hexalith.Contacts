@@ -126,4 +126,13 @@
   <data name="Disabled" xml:space="preserve">
     <value>Désactivé</value>
   </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Téléphone</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Courriel</value>
+  </data>
 </root>

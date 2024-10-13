@@ -1,28 +1,21 @@
 ﻿namespace Hexalith.Contacts.Shared.Contacts.ViewModels;
 
+using Hexalith.Contact.Domain.ValueObjects;
+
 /// <summary>
-/// Represents the details of a factory.
+/// Represents the details of a contact in the system.
 /// </summary>
+/// <param name="Id">The unique identifier of the contact.</param>
+/// <param name="Name">The name of the contact.</param>
+/// <param name="Description">A description of the contact.</param>
+/// <param name="Person">The person associated with this contact.</param>
+/// <param name="ContactPoints">A collection of contact points for this contact.</param>
+/// <param name="Disabled">A flag indicating whether the contact is disabled.</param>
 public record ContactDetails(
-
-    /// <summary>
-    /// Gets the ID of the factory.
-    /// </summary>
     string Id,
-
-    /// <summary>
-    /// Gets the name of the factory.
-    /// </summary>
     string Name,
-
-    /// <summary>
-    /// Gets the description of the factory.
-    /// </summary>
     string Description,
+    Person Person,
+    IEnumerable<ContactPoint> ContactPoints,
+    bool Disabled);
 
-    /// <summary>
-    /// Gets a value indicating whether the factory is disabled.
-    /// </summary>
-    bool Disabled)
-{
-}

@@ -5,18 +5,18 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
-using Hexalith.UI.Components.ViewModels;
 using Hexalith.Contacts.Shared.Contacts.ViewModels;
+using Hexalith.UI.Components.ViewModels;
 
 /// <summary>
-/// The in-memory factory service.
+/// Represents an in-memory implementation of the contact query service.
 /// </summary>
 public class MemoryContactQueryService : IContactQueryService
 {
     private readonly IEnumerable<ContactDetails> _data;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="MemoryContactQueryService"/> class.
+    /// Initializes a new instance of the <see cref="MemoryContactQueryService"/> class with an empty data set.
     /// </summary>
     public MemoryContactQueryService()
         : this([])
@@ -24,9 +24,10 @@ public class MemoryContactQueryService : IContactQueryService
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="MemoryContactQueryService"/> class.
+    /// Initializes a new instance of the <see cref="MemoryContactQueryService"/> class with the specified data.
     /// </summary>
-    /// <param name="data">The factories.</param>
+    /// <param name="data">The initial set of contact details.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="data"/> is null.</exception>
     public MemoryContactQueryService([NotNull] IEnumerable<ContactDetails> data)
     {
         ArgumentNullException.ThrowIfNull(data);

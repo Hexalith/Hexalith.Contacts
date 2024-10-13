@@ -88,15 +88,6 @@ namespace Hexalith.Contacts.Shared.Resources.Contacts.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Priority weight.
-        /// </summary>
-        internal static string PriorityWeight {
-            get {
-                return ResourceManager.GetString("PriorityWeight", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         internal static string Save {
@@ -106,7 +97,7 @@ namespace Hexalith.Contacts.Shared.Resources.Contacts.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add a Warehouse.
+        ///   Looks up a localized string similar to Add a contact.
         /// </summary>
         internal static string Title {
             get {
