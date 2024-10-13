@@ -21,7 +21,7 @@ public class AddContactTest
             TypeInfoResolver = new PolymorphicSerializationResolver([new AddContactMapper()]),
         };
         AddContact message = new("1", "Test AddContactBaseType", "This is a test AddContactBaseType", new Contact.Domain.ValueObjects.Person());
-        Metadata metadata = Metadata.CreateNew(message, "test", DateTime.UtcNow);
+        Metadata metadata = Metadata.CreateNew(message, "test", "part1", DateTime.UtcNow);
         ActorMessageEnvelope envelope = ActorMessageEnvelope.Create(message, metadata, jsonOptions);
 
         // Act
