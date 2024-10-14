@@ -1,10 +1,10 @@
 namespace HexalithApp.Shared;
 
 using Hexalith.Application.Modules.Applications;
+using Hexalith.Contacts.Shared.Modules;
 using Hexalith.EasyAuthentication.Shared;
 using Hexalith.Extensions.Helpers;
 using Hexalith.UI.Components.Modules;
-using Hexalith.Contacts.Shared.Modules;
 
 /// <summary>
 /// Represents a shared application.
@@ -15,7 +15,7 @@ public class SharedApplication : HexalithSharedApplication
     public override string HomePath => "Contact";
 
     /// <inheritdoc/>
-    public override string Id => "ContactConstructionSite";
+    public override string Id => "Contact";
 
     /// <inheritdoc/>
     public override string LoginPath => "/.auth/login/aad";
@@ -29,11 +29,11 @@ public class SharedApplication : HexalithSharedApplication
     /// <inheritdoc/>
     public override IEnumerable<Type> SharedModules =>
     [
-        typeof(ContactConstructionSiteSharedModule),
+        typeof(ContactSharedModule),
         typeof(HexalithUIComponentsSharedModule),
         typeof(HexalithEasyAuthenticationSharedModule),
     ];
 
     /// <inheritdoc/>
-    public override string Version => VersionHelper.ProductVersion<ContactConstructionSiteSharedModule>() ?? "?.?.?";
+    public override string Version => VersionHelper.ProductVersion<ContactSharedModule>() ?? "?.?.?";
 }

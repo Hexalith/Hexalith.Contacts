@@ -1,6 +1,6 @@
 {
 	"profiles": {
-		"ContactConstructionSite.Server": {
+		"Contact.Server": {
 			"commandName": "Project",
 			"launchBrowser": true,
 			"environmentVariables": {

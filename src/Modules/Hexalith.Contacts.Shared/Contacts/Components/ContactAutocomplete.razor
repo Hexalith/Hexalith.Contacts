@@ -1,5 +1,4 @@
-﻿@using Hexalith.UI.Components
-@inject IServiceProvider ServiceProvider
+﻿@inject IServiceProvider ServiceProvider
 @using Labels = Hexalith.Contacts.Shared.Resources.Contacts.Components.ContactAutocomplete
 @using Microsoft.Extensions.DependencyInjection
 
@@ -35,8 +34,8 @@
     public string? Placeholder { get; set; }
 
     private async Task OnIdChanged(string? id)
-	{
-		await IdChanged.InvokeAsync(id);
-	}
+    {
+        await IdChanged.InvokeAsync(id);
+    }
 
 }

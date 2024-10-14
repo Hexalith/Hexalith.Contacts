@@ -3,9 +3,13 @@
 using System.Collections.Generic;
 using System.Reflection;
 
+using Hexalith.Application.Aggregates;
+using Hexalith.Application.Commands;
 using Hexalith.Application.Modules.Modules;
-using Hexalith.Contacts.Application;
+using Hexalith.Contacts.Application.CommandHandlers;
+using Hexalith.Contacts.Commands;
 using Hexalith.Contacts.Commands.Extensions;
+using Hexalith.Contacts.Domain;
 using Hexalith.Contacts.Events.Extensions;
 using Hexalith.Contacts.Shared.Contacts.Services;
 using Hexalith.PolymorphicSerialization;
@@ -14,23 +18,24 @@ using Hexalith.UI.Components.Icons;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 /// <summary>
 /// The contact construction site shared module.
 /// </summary>
-public class ContactConstructionSiteSharedModule : ISharedApplicationModule
+public class ContactSharedModule : ISharedApplicationModule
 {
     /// <inheritdoc/>
     public IEnumerable<string> Dependencies => ["Hexalith.Oidc"];
 
     /// <inheritdoc/>
-    public string Description => "Contact construction site shared module";
+    public string Description => "Contact shared module";
 
     /// <inheritdoc/>
-    public string Id => "ContactConstructionSite.Shared";
+    public string Id => "Contact.Shared";
 
     /// <inheritdoc/>
-    public string Name => "Contact construction site shared";
+    public string Name => "Contact shared";
 
     /// <inheritdoc/>
     public int OrderWeight => 0;
@@ -54,15 +59,22 @@ public class ContactConstructionSiteSharedModule : ISharedApplicationModule
         PolymorphicSerializationResolver.DefaultMappers = PolymorphicSerializationResolver.DefaultMappers
             .AddHexalithContactsEventsMappers()
             .AddHexalithContactsCommandsMappers();
+        _ = services.AddHexalithContactsCommandsMappers();
+        _ = services.AddHexalithContactsEventsMappers();
+
+        // Add domain aggregate providers
+        services.TryAddSingleton<IDomainAggregateProvider, DomainAggregateProvider<Contact>>();
+
+        // Add command handlers
+        services.TryAddSingleton<IDomainCommandHandler<AddContact>, AddContactHandler>();
 
         _ = services
-            .AddContactApplication()
             .AddSingleton<IContactQueryService, DemoContactQueryService>()
             .AddSingleton<IContactQueryService, DemoContactQueryService>()
             .AddSingleton(new MenuItemInformation(
                 "Home",
                 "/",
-                new IconInformation("Home", 20, IconStyle.Regular, IconSource.Fluent, $"{nameof(Contact)}.{nameof(Shared)}"),
+                new IconInformation("Home", 20, IconStyle.Regular, IconSource.Fluent, $"{nameof(Hexalith.Contact)}.{nameof(Shared)}"),
                 true,
                 0,
                 []))
