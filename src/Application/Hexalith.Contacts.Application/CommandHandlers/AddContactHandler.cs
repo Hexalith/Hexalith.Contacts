@@ -4,7 +4,7 @@ using Hexalith.Application.Commands;
 using Hexalith.Application.MessageMetadatas;
 using Hexalith.Contacts.Commands;
 using Hexalith.Contacts.Domain;
-using Hexalith.Contacts.Events.Contacts;
+using Hexalith.Contacts.Events;
 using Hexalith.Domain.Aggregates;
 
 /// <summary>

@@ -2,12 +2,13 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
+using System.Text.Json;
 
 using Hexalith.Contact.Domain;
 using Hexalith.Contact.Domain.ValueObjects;
 using Hexalith.Contacts.Events;
-using Hexalith.Contacts.Events.Contacts;
 using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Represents a contact in the domain.
@@ -50,30 +51,44 @@ public record Contact(
     /// <inheritdoc/>
     public string AggregateName => ContactDomainHelper.ContactAggregateName;
 
-    /// <summary>
-    /// Applies the specified domain event.
-    /// </summary>
-    /// <param name="domainEvent">The domain event.</param>
-    /// <returns>ApplyResult.</returns>
+    /// <inheritdoc/>
     public ApplyResult Apply([NotNull] object domainEvent)
     {
         ArgumentNullException.ThrowIfNull(domainEvent);
         if (domainEvent is ContactAdded added)
         {
-            if (string.IsNullOrWhiteSpace(Id))
+            if (!IsInitialized())
             {
                 return ApplyEvent(added);
             }
 
-            return new ApplyResult(this, [InvalidContactEventCancelled.Create(AggregateName, AggregateId, domainEvent, $"Aggregate {Id}/{Name} already initialized")], true);
+            return new ApplyResult(
+                this,
+                [new ContactEventCancelled(added, $"Aggregate {Id}/{Name} already initialized")],
+                true);
         }
 
-        if (domainEvent is ContactEvent contactEvent && contactEvent.AggregateId != Id)
+        if (domainEvent is ContactEvent contactEvent)
         {
-            return new ApplyResult(this, [InvalidContactEventCancelled.Create(AggregateName, AggregateId, domainEvent, $"Invalid aggregate identifier for {Id}/{Name} : {contactEvent.Id}")], true);
+            if (contactEvent.AggregateId != AggregateId)
+            {
+                return new ApplyResult(this, [new ContactEventCancelled(contactEvent, $"Invalid aggregate identifier for {Id}/{Name} : {contactEvent.AggregateId}")], true);
+            }
+        }
+        else
+        {
+            return new ApplyResult(
+                this,
+                [new InvalidEventApplied(
+                    AggregateName,
+                    AggregateId,
+                    domainEvent.GetType().FullName ?? "Unknown",
+                    JsonSerializer.Serialize(domainEvent),
+                    $"Unexpected event applied.")],
+                true);
         }
 
-        return domainEvent switch
+        return contactEvent switch
         {
             ContactPersonChanged e => ApplyEvent(e),
             ContactDescriptionChanged e => ApplyEvent(e),
@@ -82,7 +97,10 @@ public record Contact(
             ContactPointAdded e => ApplyEvent(e),
             ContactPointChanged e => ApplyEvent(e),
             ContactPointRemoved e => ApplyEvent(e),
-            _ => new ApplyResult(this, [InvalidContactEventCancelled.Create(AggregateName, AggregateId, domainEvent, "Event not supported")], true),
+            _ => new ApplyResult(
+                this,
+                [new ContactEventCancelled(contactEvent, "Event not implemented")],
+                true),
         };
     }
 
@@ -108,7 +126,7 @@ public record Contact(
     {
         if (ContactPoints.Any(p => p.Name == e.ContactPoint.Name))
         {
-            return new ApplyResult(this, [InvalidContactEventCancelled.Create(AggregateName, AggregateId, e, $"Contact point {e.ContactPoint.Name} already exists for {Id}/{Name}")], true);
+            return new ApplyResult(this, [new ContactEventCancelled(e, $"Contact point {e.ContactPoint.Name} already exists for {Id}/{Name}")], true);
         }
 
         return new ApplyResult(
@@ -128,7 +146,7 @@ public record Contact(
         ContactPoint? oldValue = points.FirstOrDefault(p => p.Name == e.ContactPoint.Name);
         if (oldValue == null)
         {
-            return new ApplyResult(this, [InvalidContactEventCancelled.Create(AggregateName, AggregateId, e, $"Contact point {e.ContactPoint.Name} does not exist for {Id}/{Name}")], true);
+            return new ApplyResult(this, [new ContactEventCancelled(e, $"Contact point {e.ContactPoint.Name} does not exist for {Id}/{Name}")], true);
         }
 
         if (oldValue != e.ContactPoint)
@@ -151,7 +169,7 @@ public record Contact(
     {
         if (ContactPoints.Any(p => p.Name == e.Name) == false)
         {
-            return new ApplyResult(this, [InvalidContactEventCancelled.Create(AggregateName, AggregateId, e, $"Contact point {e.Name} does not exist for {Id}/{Name}")], true);
+            return new ApplyResult(this, [new ContactEventCancelled(e, $"Contact point {e.Name} does not exist for {Id}/{Name}")], true);
         }
 
         return new ApplyResult(

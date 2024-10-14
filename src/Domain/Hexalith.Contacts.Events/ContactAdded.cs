@@ -1,4 +1,4 @@
-﻿namespace Hexalith.Contacts.Events.Contacts;
+﻿namespace Hexalith.Contacts.Events;
 
 using Hexalith.Contact.Domain.ValueObjects;
 using Hexalith.PolymorphicSerialization;

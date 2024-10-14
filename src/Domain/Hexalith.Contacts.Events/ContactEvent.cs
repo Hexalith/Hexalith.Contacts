@@ -1,4 +1,4 @@
-﻿namespace Hexalith.Contacts.Events.Contacts;
+﻿namespace Hexalith.Contacts.Events;
 
 using Hexalith.Contact.Domain;
 using Hexalith.PolymorphicSerialization;
@@ -12,7 +12,7 @@ public abstract partial record ContactEvent(string Id)
     /// <summary>
     /// Gets the aggregate ID of the contact command.
     /// </summary>
-    public string AggregateId => AggregateName + "-" + Id;
+    public string AggregateId => Id;
 
     /// <summary>
     /// Gets the aggregate name of the contact command.
