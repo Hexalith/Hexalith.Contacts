@@ -9,9 +9,7 @@ namespace Hexalith.Contacts.Client.Services;
 using System.Net.Http.Json;
 
 using Hexalith.Application.Commands;
-using Hexalith.Application.Envelopes;
-using Hexalith.Application.Metadatas;
-using Hexalith.Application.States;
+using Hexalith.Application.MessageMetadatas;
 
 /// <summary>
 /// Represents a proxy for the command bus.
@@ -35,45 +33,16 @@ public class CommandBusProxy : ICommandBus
     }
 
     /// <inheritdoc/>
-    /// <exception cref="NotImplementedException">This method is not implemented.</exception>
-    public async Task PublishAsync(IEnvelope<BaseCommand, BaseMetadata> envelope, CancellationToken cancellationToken) => await PublishAsync(
-                new CommandState(
-                    _timeProvider.GetLocalNow(),
-                    (envelope ?? throw new ArgumentNullException(nameof(envelope))).Message,
-                    envelope.Metadata),
-                cancellationToken)
-            .ConfigureAwait(false);
-
-    /// <inheritdoc/>
-    /// <exception cref="NotImplementedException">This method is not implemented.</exception>
-    public async Task PublishAsync(BaseCommand command, BaseMetadata metadata, CancellationToken cancellationToken) => await PublishAsync(
-                new CommandState(
-                    _timeProvider.GetLocalNow(),
-                    command,
-                    metadata),
-                cancellationToken)
-            .ConfigureAwait(false);
-
-    /// <inheritdoc/>
-    public async Task PublishAsync(CommandState commandState, CancellationToken cancellationToken)
+    public async Task PublishAsync(object message, Metadata metadata, CancellationToken cancellationToken)
     {
         HttpResponseMessage response = await _httpClient
-            .PostAsJsonAsync("/Command/Publish", commandState, cancellationToken)
+            .PostAsJsonAsync("/api/command/publish", Hexalith.Application.MessageMetadatas.MessageState.Create(message, metadata), cancellationToken)
             .ConfigureAwait(false);
         _ = response.EnsureSuccessStatusCode();
     }
 
     /// <inheritdoc/>
-    public async Task PublishAsync(object command, Hexalith.Application.MessageMetadatas.Metadata metadata, CancellationToken cancellationToken)
-    {
-        HttpResponseMessage response = await _httpClient
-            .PostAsJsonAsync("/api/command/publish", Hexalith.Application.MessageMetadatas.MessageState.Create(command, metadata), cancellationToken)
-            .ConfigureAwait(false);
-        _ = response.EnsureSuccessStatusCode();
-    }
-
-    /// <inheritdoc/>
-    public async Task PublishAsync(Hexalith.Application.MessageMetadatas.MessageState message, CancellationToken cancellationToken)
+    public async Task PublishAsync(MessageState message, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(message);
         await PublishAsync(
