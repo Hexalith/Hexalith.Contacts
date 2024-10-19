@@ -5,8 +5,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application;
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.Contacts.Commands;
 using Hexalith.Contacts.Commands.Extensions;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
@@ -18,8 +17,8 @@ public class AddContactTest
     public void AddContactBaseTypeInEnvelopeShouldBeSameAsOriginal()
     {
         // Arrange
-        PolymorphicSerializationResolver.DefaultMappers = PolymorphicSerializationResolver.DefaultMappers.AddHexalithContactsCommandsMappers();
-        JsonSerializerOptions jsonOptions = ApplicationConstants.DefaultJsonSerializerOptions;
+        HexalithContactsCommands.RegisterPolymorphicMappers();
+        JsonSerializerOptions jsonOptions = PolymorphicHelper.DefaultJsonSerializerOptions;
         AddContact message = new("1", "Test AddContactBaseType", "This is a test AddContactBaseType", new Contact.Domain.ValueObjects.Person());
         Metadata metadata = Metadata.CreateNew(message, "test", "part1", DateTime.UtcNow);
         ActorMessageEnvelope envelope = ActorMessageEnvelope.Create(message, metadata);

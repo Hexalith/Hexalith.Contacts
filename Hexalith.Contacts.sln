@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# 17
+# Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{4BF53A8A-B344-4C1A-AE24-1FC41E2188E9}"
@@ -205,6 +205,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_global", "_global", "{C3E5
 	ProjectSection(SolutionItems) = preProject
 		Hexalith\.editorconfig = Hexalith\.editorconfig
 		Hexalith\.stylecop.json = Hexalith\.stylecop.json
+		Hexalith\flush_redis.bat = Hexalith\flush_redis.bat
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Contacts.Application", "src\Application\Hexalith.Contacts.Application\Hexalith.Contacts.Application.csproj", "{B2DD4127-C1A7-453A-A517-95D77FAD6863}"

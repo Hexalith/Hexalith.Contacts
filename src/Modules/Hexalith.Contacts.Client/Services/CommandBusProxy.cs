@@ -9,7 +9,9 @@ namespace Hexalith.Contacts.Client.Services;
 using System.Net.Http.Json;
 
 using Hexalith.Application.Commands;
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.States;
+using Hexalith.PolymorphicSerialization;
 
 /// <summary>
 /// Represents a proxy for the command bus.
@@ -36,7 +38,7 @@ public class CommandBusProxy : ICommandBus
     public async Task PublishAsync(object message, Metadata metadata, CancellationToken cancellationToken)
     {
         HttpResponseMessage response = await _httpClient
-            .PostAsJsonAsync("/api/command/publish", Hexalith.Application.MessageMetadatas.MessageState.Create(message, metadata), cancellationToken)
+            .PostAsJsonAsync("/api/command/publish", new MessageState((PolymorphicRecordBase)message, metadata), cancellationToken)
             .ConfigureAwait(false);
         _ = response.EnsureSuccessStatusCode();
     }

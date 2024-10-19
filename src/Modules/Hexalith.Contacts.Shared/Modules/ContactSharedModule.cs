@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
+
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Modules.Modules;
@@ -12,7 +13,6 @@ using Hexalith.Contacts.Commands.Extensions;
 using Hexalith.Contacts.Domain;
 using Hexalith.Contacts.Events.Extensions;
 using Hexalith.Contacts.Shared.Contacts.Services;
-using Hexalith.PolymorphicSerialization;
 using Hexalith.UI.Components;
 using Hexalith.UI.Components.Icons;
 
@@ -56,11 +56,8 @@ public class ContactSharedModule : ISharedApplicationModule
     /// <param name="configuration">The configuration.</param>
     public static void AddServices(IServiceCollection services, IConfiguration configuration)
     {
-        PolymorphicSerializationResolver.DefaultMappers = PolymorphicSerializationResolver.DefaultMappers
-            .AddHexalithContactsEventsMappers()
-            .AddHexalithContactsCommandsMappers();
-        _ = services.AddHexalithContactsCommandsMappers();
-        _ = services.AddHexalithContactsEventsMappers();
+        HexalithContactsEvents.RegisterPolymorphicMappers();
+        HexalithContactsCommands.RegisterPolymorphicMappers();
 
         // Add domain aggregate providers
         services.TryAddSingleton<IDomainAggregateProvider, DomainAggregateProvider<Contact>>();

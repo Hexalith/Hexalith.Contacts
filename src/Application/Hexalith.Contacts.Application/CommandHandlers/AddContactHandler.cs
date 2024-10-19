@@ -1,7 +1,7 @@
 ﻿namespace Hexalith.Contacts.Application.CommandHandlers;
 
 using Hexalith.Application.Commands;
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.Contacts.Commands;
 using Hexalith.Contacts.Domain;
 using Hexalith.Contacts.Events;
