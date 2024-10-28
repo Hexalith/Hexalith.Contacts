@@ -14,7 +14,7 @@
 		<PackageReference Include="Hexalith.Infrastructure.AspireService.Hosting" Version="$(HexalithVersion)" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.1" />
+	  <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.2" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\HexalithApp\src\HexalithApp.Server\HexalithApp.Server.csproj" />
