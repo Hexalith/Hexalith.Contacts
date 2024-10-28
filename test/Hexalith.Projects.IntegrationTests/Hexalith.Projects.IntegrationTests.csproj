@@ -34,8 +34,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Modules\Hexalith.Contacts.Server\Hexalith.Contacts.Server.csproj" />
-    <ProjectReference Include="..\..\src\Modules\Hexalith.Contacts.Shared\Hexalith.Contacts.Shared.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Hexalith.Projects.Server\Hexalith.Projects.Server.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Hexalith.Projects.Shared\Hexalith.Projects.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

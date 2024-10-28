@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
-		<RootNamespace>Hexalith.Contact.Domain</RootNamespace>
+		<RootNamespace>Hexalith.Project.Domain</RootNamespace>
 		<NoWarn>$(NoWarn);S1309,</NoWarn>
 	</PropertyGroup>
 	<ItemGroup Condition="'$(UseProjectReference)' == 'true'">

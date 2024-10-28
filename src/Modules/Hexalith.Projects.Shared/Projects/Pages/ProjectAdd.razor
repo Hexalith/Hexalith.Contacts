@@ -1,11 +1,11 @@
-﻿@page "/Contact/Contact/Add"
-@inject Services.IContactQueryService ContactQueryService
+﻿@page "/Project/Project/Add"
+@inject Services.IProjectQueryService ProjectQueryService
 @inject NavigationManager NavigationManager
-@inject IStringLocalizer<ContactDetails> L
+@inject IStringLocalizer<ProjectDetails> L
 @inject IClientCommandService CommandService
 @using Hexalith.Infrastructure.ClientApp.Services
-@using Labels = Hexalith.Contacts.Shared.Resources.Contacts.Pages.ContactAdd
-@using Hexalith.Contacts.Commands
+@using Labels = Hexalith.Projects.Shared.Resources.Projects.Pages.ProjectAdd
+@using Hexalith.Projects.Commands
 
 <FluentStack Orientation="Orientation.Vertical" Style="padding:20px;">
 	<h3>@Labels.Title</h3>
@@ -45,21 +45,21 @@
 </FluentStack>
 
 @code {
-	ViewModels.ContactAdd data = new();
+	ViewModels.ProjectAdd data = new();
 
 	public async Task OnSave()
 	{
-		await CommandService.SendCommandAsync(new Hexalith.Contacts.Commands.AddContact(
+		await CommandService.SendCommandAsync(new Hexalith.Projects.Commands.AddProject(
 				data.Id,
 				data.Name,
 				data.Comments,
-				new Contact.Domain.ValueObjects.Person(
+				new Project.Domain.ValueObjects.Person(
 					data.Name,
 					data.FirstName,
 					data.LastName, null,
-					Contact.Domain.ValueObjects.Gender.Undefined)),
+					Project.Domain.ValueObjects.Gender.Undefined)),
 			CancellationToken.None);
-		NavigationManager.NavigateTo("/Contact/Contact");
+		NavigationManager.NavigateTo("/Project/Project");
 	}
 
 	private Task OnNameFocus(FocusEventArgs args)

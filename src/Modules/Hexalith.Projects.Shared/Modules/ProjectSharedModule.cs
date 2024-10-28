@@ -1,4 +1,4 @@
-﻿namespace Hexalith.Contacts.Shared.Modules;
+﻿namespace Hexalith.Projects.Shared.Modules;
 
 using System.Collections.Generic;
 using System.Reflection;
@@ -7,12 +7,12 @@ using System.Reflection;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Modules.Modules;
-using Hexalith.Contacts.Application.CommandHandlers;
-using Hexalith.Contacts.Commands;
-using Hexalith.Contacts.Commands.Extensions;
-using Hexalith.Contacts.Domain;
-using Hexalith.Contacts.Events.Extensions;
-using Hexalith.Contacts.Shared.Contacts.Services;
+using Hexalith.Projects.Application.CommandHandlers;
+using Hexalith.Projects.Commands;
+using Hexalith.Projects.Commands.Extensions;
+using Hexalith.Projects.Domain;
+using Hexalith.Projects.Events.Extensions;
+using Hexalith.Projects.Shared.Projects.Services;
 using Hexalith.UI.Components;
 using Hexalith.UI.Components.Icons;
 
@@ -21,27 +21,27 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 /// <summary>
-/// The contact construction site shared module.
+/// The project construction site shared module.
 /// </summary>
-public class ContactSharedModule : ISharedApplicationModule
+public class ProjectSharedModule : ISharedApplicationModule
 {
     /// <inheritdoc/>
     public IEnumerable<string> Dependencies => ["Hexalith.Oidc"];
 
     /// <inheritdoc/>
-    public string Description => "Contact shared module";
+    public string Description => "Project shared module";
 
     /// <inheritdoc/>
-    public string Id => "Contact.Shared";
+    public string Id => "Project.Shared";
 
     /// <inheritdoc/>
-    public string Name => "Contact shared";
+    public string Name => "Project shared";
 
     /// <inheritdoc/>
     public int OrderWeight => 0;
 
     /// <inheritdoc/>
-    public string Path => "Contact";
+    public string Path => "Project";
 
     /// <inheritdoc/>
     public IEnumerable<Assembly> PresentationAssemblies => [GetType().Assembly];
@@ -56,26 +56,26 @@ public class ContactSharedModule : ISharedApplicationModule
     /// <param name="configuration">The configuration.</param>
     public static void AddServices(IServiceCollection services, IConfiguration configuration)
     {
-        HexalithContactsEvents.RegisterPolymorphicMappers();
-        HexalithContactsCommands.RegisterPolymorphicMappers();
+        HexalithProjectsEvents.RegisterPolymorphicMappers();
+        HexalithProjectsCommands.RegisterPolymorphicMappers();
 
         // Add domain aggregate providers
-        services.TryAddSingleton<IDomainAggregateProvider, DomainAggregateProvider<Contact>>();
+        services.TryAddSingleton<IDomainAggregateProvider, DomainAggregateProvider<Project>>();
 
         // Add command handlers
-        services.TryAddSingleton<IDomainCommandHandler<AddContact>, AddContactHandler>();
+        services.TryAddSingleton<IDomainCommandHandler<AddProject>, AddProjectHandler>();
 
         _ = services
-            .AddSingleton<IContactQueryService, DemoContactQueryService>()
-            .AddSingleton<IContactQueryService, DemoContactQueryService>()
+            .AddSingleton<IProjectQueryService, DemoProjectQueryService>()
+            .AddSingleton<IProjectQueryService, DemoProjectQueryService>()
             .AddSingleton(new MenuItemInformation(
                 "Home",
                 "/",
-                new IconInformation("Home", 20, IconStyle.Regular, IconSource.Fluent, $"{nameof(Hexalith.Contact)}.{nameof(Shared)}"),
+                new IconInformation("Home", 20, IconStyle.Regular, IconSource.Fluent, $"{nameof(Hexalith.Project)}.{nameof(Shared)}"),
                 true,
                 0,
                 []))
-            .AddTransient(p => ContactMenu.Menu);
+            .AddTransient(p => ProjectMenu.Menu);
     }
 
     /// <inheritdoc/>

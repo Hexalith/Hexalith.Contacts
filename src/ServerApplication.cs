@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 
 using Hexalith.Application.Modules.Applications;
-using Hexalith.Contacts.Server.Modules;
+using Hexalith.Projects.Server.Modules;
 using Hexalith.EasyAuthentication.Server;
 
 using HexalithApp.Client;
@@ -25,7 +25,7 @@ public class ServerApplication : HexalithServerApplication
 
     /// <inheritdoc/>
     public override IEnumerable<Type> ServerModules => [
-        typeof(ContactServerModule),
+        typeof(ProjectServerModule),
         typeof(HexalithEasyAuthenticationServerModule)];
 
     /// <inheritdoc/>

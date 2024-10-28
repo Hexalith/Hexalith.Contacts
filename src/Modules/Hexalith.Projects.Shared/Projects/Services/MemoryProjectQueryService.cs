@@ -1,41 +1,41 @@
-﻿namespace Hexalith.Contacts.Shared.Contacts.Services;
+﻿namespace Hexalith.Projects.Shared.Projects.Services;
 
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
-using Hexalith.Contacts.Shared.Contacts.ViewModels;
+using Hexalith.Projects.Shared.Projects.ViewModels;
 using Hexalith.UI.Components.ViewModels;
 
 /// <summary>
-/// Represents an in-memory implementation of the contact query service.
+/// Represents an in-memory implementation of the project query service.
 /// </summary>
-public class MemoryContactQueryService : IContactQueryService
+public class MemoryProjectQueryService : IProjectQueryService
 {
-    private readonly IEnumerable<ContactDetails> _data;
+    private readonly IEnumerable<ProjectDetails> _data;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="MemoryContactQueryService"/> class with an empty data set.
+    /// Initializes a new instance of the <see cref="MemoryProjectQueryService"/> class with an empty data set.
     /// </summary>
-    public MemoryContactQueryService()
+    public MemoryProjectQueryService()
         : this([])
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="MemoryContactQueryService"/> class with the specified data.
+    /// Initializes a new instance of the <see cref="MemoryProjectQueryService"/> class with the specified data.
     /// </summary>
-    /// <param name="data">The initial set of contact details.</param>
+    /// <param name="data">The initial set of project details.</param>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="data"/> is null.</exception>
-    public MemoryContactQueryService([NotNull] IEnumerable<ContactDetails> data)
+    public MemoryProjectQueryService([NotNull] IEnumerable<ProjectDetails> data)
     {
         ArgumentNullException.ThrowIfNull(data);
         _data = data;
     }
 
     /// <inheritdoc/>
-    public Task<ContactDetails> GetDetailsAsync(string id)
+    public Task<ProjectDetails> GetDetailsAsync(string id)
         => Task.FromResult(_data.Single(p => p.Id == id));
 
     /// <inheritdoc/>
@@ -63,9 +63,9 @@ public class MemoryContactQueryService : IContactQueryService
     }
 
     /// <inheritdoc/>
-    public Task<IEnumerable<ContactSummary>> GetSummariesAsync(int skip, int count)
+    public Task<IEnumerable<ProjectSummary>> GetSummariesAsync(int skip, int count)
     {
-        IEnumerable<ContactDetails> factories = _data;
+        IEnumerable<ProjectDetails> factories = _data;
         if (skip > 0)
         {
             factories = factories.Skip(skip);
@@ -76,7 +76,7 @@ public class MemoryContactQueryService : IContactQueryService
             factories = factories.Take(count);
         }
 
-        return Task.FromResult(factories.Select(p => new ContactSummary(p)));
+        return Task.FromResult(factories.Select(p => new ProjectSummary(p)));
     }
 
     /// <inheritdoc/>
@@ -104,9 +104,9 @@ public class MemoryContactQueryService : IContactQueryService
     }
 
     /// <inheritdoc/>
-    public Task<IEnumerable<ContactSummary>> SearchSummariesAsync(string searchText)
+    public Task<IEnumerable<ProjectSummary>> SearchSummariesAsync(string searchText)
     {
-        IEnumerable<ContactDetails> factories = _data;
+        IEnumerable<ProjectDetails> factories = _data;
         if (!string.IsNullOrWhiteSpace(searchText))
         {
             factories = factories.Where(f =>
@@ -114,6 +114,6 @@ public class MemoryContactQueryService : IContactQueryService
                 f.Id.Contains(searchText, StringComparison.OrdinalIgnoreCase));
         }
 
-        return Task.FromResult(factories.Select(p => new ContactSummary(p)));
+        return Task.FromResult(factories.Select(p => new ProjectSummary(p)));
     }
 }

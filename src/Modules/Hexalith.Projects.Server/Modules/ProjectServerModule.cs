@@ -1,4 +1,4 @@
-﻿namespace Hexalith.Contacts.Server.Modules;
+﻿namespace Hexalith.Projects.Server.Modules;
 
 using System.Collections.Generic;
 using System.Reflection;
@@ -6,9 +6,9 @@ using System.Reflection;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Modules.Modules;
-using Hexalith.Contact.Domain;
-using Hexalith.Contacts.Domain;
-using Hexalith.Contacts.Server.Application.Helpers;
+using Hexalith.Project.Domain;
+using Hexalith.Projects.Domain;
+using Hexalith.Projects.Server.Application.Helpers;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
@@ -17,21 +17,21 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
-/// The contact construction site client module.
+/// The project construction site client module.
 /// </summary>
-public sealed class ContactServerModule : IServerApplicationModule
+public sealed class ProjectServerModule : IServerApplicationModule
 {
     /// <inheritdoc/>
     public IEnumerable<string> Dependencies => [];
 
     /// <inheritdoc/>
-    public string Description => "Contact server module";
+    public string Description => "Project server module";
 
     /// <inheritdoc/>
-    public string Id => "Contact.Server";
+    public string Id => "Project.Server";
 
     /// <inheritdoc/>
-    public string Name => "Hexalith Contact server";
+    public string Name => "Hexalith Project server";
 
     /// <inheritdoc/>
     public int OrderWeight => 0;
@@ -45,7 +45,7 @@ public sealed class ContactServerModule : IServerApplicationModule
     /// <inheritdoc/>
     string IApplicationModule.Path => Path;
 
-    private static string Path => "Contact";
+    private static string Path => "Project";
 
     /// <summary>
     /// Adds services to the service collection.
@@ -58,8 +58,8 @@ public sealed class ContactServerModule : IServerApplicationModule
         _ = services
             .ConfigureSettings<Hexalith.Infrastructure.CosmosDb.Configurations.CosmosDbSettings>(configuration);
 
-        _ = services.AddContactCommandHandlers();
-        _ = services.AddContactEventValidators();
+        _ = services.AddProjectCommandHandlers();
+        _ = services.AddProjectEventValidators();
     }
 
     /// <summary>
@@ -74,8 +74,8 @@ public sealed class ContactServerModule : IServerApplicationModule
             throw new ArgumentException($"{nameof(RegisterActors)} parameter must be an {nameof(ActorRegistrationCollection)}. Actual type : {actorCollection.GetType().Name}.", nameof(actorCollection));
         }
 
-        actorRegistrations.RegisterActor<DomainAggregateActor>(DomainAggregateActorBase.GetAggregateActorName(ContactDomainHelper.ContactAggregateName));
-        actorRegistrations.RegisterProjectionActor<Contact>("Contact");
+        actorRegistrations.RegisterActor<DomainAggregateActor>(DomainAggregateActorBase.GetAggregateActorName(ProjectDomainHelper.ProjectAggregateName));
+        actorRegistrations.RegisterProjectionActor<Project>("Project");
     }
 
     /// <inheritdoc/>

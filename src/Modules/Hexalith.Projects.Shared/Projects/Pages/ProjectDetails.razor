@@ -1,14 +1,14 @@
-﻿@page "/Contact/Contact/{ContactId}"
-@inject Services.IContactQueryService ContactQueryService
+﻿@page "/Project/Project/{ProjectId}"
+@inject Services.IProjectQueryService ProjectQueryService
 @inject NavigationManager NavigationManager
-@inject IStringLocalizer<ContactDetails> L
+@inject IStringLocalizer<ProjectDetails> L
 @inject IClientCommandService CommandService
 @using Hexalith.Infrastructure.ClientApp.Services
-@using Labels = Hexalith.Contacts.Shared.Resources.Contacts.Pages.ContactDetails;
-@using Hexalith.Contacts.Commands
+@using Labels = Hexalith.Projects.Shared.Resources.Projects.Pages.ProjectDetails;
+@using Hexalith.Projects.Commands
 
 <FluentStack Orientation="Orientation.Vertical" Style="padding:20px;">
-	<h3>@L[Labels.Title, ContactId]</h3>
+	<h3>@L[Labels.Title, ProjectId]</h3>
 	@if (data is not null)
 	{
 		<FluentStack Orientation="Orientation.Vertical">
@@ -25,20 +25,20 @@
 
 @code {
 	[Parameter]
-	public string ContactId { get; set; } = string.Empty;
+	public string ProjectId { get; set; } = string.Empty;
 
 
 	protected override async Task OnInitializedAsync()
 	{
-		if (string.IsNullOrWhiteSpace(ContactId))
+		if (string.IsNullOrWhiteSpace(ProjectId))
 		{
 			data = null;
 			return;
 		}
-		data = new ( await ContactQueryService.GetDetailsAsync(ContactId));
+		data = new ( await ProjectQueryService.GetDetailsAsync(ProjectId));
 	}
 
-	ViewModels.ContactEdit? data = null;
+	ViewModels.ProjectEdit? data = null;
 
 	public async Task OnSave()
 	{
@@ -48,13 +48,13 @@
 		}
 		if (data.Name == data.Original.Name || data.Description != data.Original.Description)
 		{
-			await CommandService.SendCommandAsync(new ChangeContactDescription(data.Id, data.Name, data.Description), CancellationToken.None);
+			await CommandService.SendCommandAsync(new ChangeProjectDescription(data.Id, data.Name, data.Description), CancellationToken.None);
 		}
 		if (data.Disabled == data.Original?.Disabled)
 		{
-			await CommandService.SendCommandAsync(new DisableContact(data.Id), CancellationToken.None);
+			await CommandService.SendCommandAsync(new DisableProject(data.Id), CancellationToken.None);
 		}
-		NavigationManager.NavigateTo("/Contact/Contact");
+		NavigationManager.NavigateTo("/Project/Project");
 	}
 
 }

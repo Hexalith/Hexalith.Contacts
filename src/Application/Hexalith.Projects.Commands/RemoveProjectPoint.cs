@@ -1,9 +1,9 @@
-﻿namespace Hexalith.Contacts.Commands;
+﻿namespace Hexalith.Projects.Commands;
 
 using Hexalith.PolymorphicSerialization;
 
 [PolymorphicSerialization]
-public partial record RemoveContactPoint(string Id, string Name)
-    : ContactCommand(Id)
+public partial record RemoveProjectPoint(string Id, string Name)
+    : ProjectCommand(Id)
 {
 }

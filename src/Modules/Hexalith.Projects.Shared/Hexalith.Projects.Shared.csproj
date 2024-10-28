@@ -12,76 +12,76 @@
 		<PackageReference Include="Hexalith.UI.Components" Version="$(HexalithVersion)" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Application\Hexalith.Contacts.Application\Hexalith.Contacts.Application.csproj" />
-	  <ProjectReference Include="..\..\Application\Hexalith.Contacts.Commands\Hexalith.Contacts.Commands.csproj" />
-	  <ProjectReference Include="..\..\Domain\Hexalith.Contacts.Domain\Hexalith.Contacts.Domain.csproj" />
-	  <ProjectReference Include="..\..\Domain\Hexalith.Contacts.Events\Hexalith.Contacts.Events.csproj" />
+	  <ProjectReference Include="..\..\Application\Hexalith.Projects.Application\Hexalith.Projects.Application.csproj" />
+	  <ProjectReference Include="..\..\Application\Hexalith.Projects.Commands\Hexalith.Projects.Commands.csproj" />
+	  <ProjectReference Include="..\..\Domain\Hexalith.Projects.Domain\Hexalith.Projects.Domain.csproj" />
+	  <ProjectReference Include="..\..\Domain\Hexalith.Projects.Events\Hexalith.Projects.Events.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Compile Update="Localization\ContactResource.fr-FR.Designer.cs">
+	  <Compile Update="Localization\ProjectResource.fr-FR.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>ContactResource.fr-FR.resx</DependentUpon>
+	    <DependentUpon>ProjectResource.fr-FR.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="Localization\ContactElementResource.Designer.cs">
+	  <Compile Update="Localization\ProjectElementResource.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>ContactElementResource.resx</DependentUpon>
+	    <DependentUpon>ProjectElementResource.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="Resources\Modules\ContactMenu.Designer.cs">
+	  <Compile Update="Resources\Modules\ProjectMenu.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>ContactMenu.resx</DependentUpon>
+	    <DependentUpon>ProjectMenu.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="Resources\Contacts\Components\ContactAutocomplete.Designer.cs">
+	  <Compile Update="Resources\Projects\Components\ProjectAutocomplete.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>ContactAutocomplete.resx</DependentUpon>
+	    <DependentUpon>ProjectAutocomplete.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="Resources\Contacts\Components\ContactSummaryGrid.Designer.cs">
-	    <DependentUpon>ContactSummaryGrid.resx</DependentUpon>
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	  </Compile>
-	  <Compile Update="Resources\Contacts\Pages\ContactAdd.Designer.cs">
-	    <DependentUpon>ContactAdd.resx</DependentUpon>
+	  <Compile Update="Resources\Projects\Components\ProjectSummaryGrid.Designer.cs">
+	    <DependentUpon>ProjectSummaryGrid.resx</DependentUpon>
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	  </Compile>
-	  <Compile Update="Resources\Contacts\Pages\ContactDetails.Designer.cs">
-	    <DependentUpon>ContactDetails.resx</DependentUpon>
+	  <Compile Update="Resources\Projects\Pages\ProjectAdd.Designer.cs">
+	    <DependentUpon>ProjectAdd.resx</DependentUpon>
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	  </Compile>
-	  <Compile Update="Resources\Contacts\Pages\ContactIndex.Designer.cs">
-	    <DependentUpon>ContactIndex.resx</DependentUpon>
+	  <Compile Update="Resources\Projects\Pages\ProjectDetails.Designer.cs">
+	    <DependentUpon>ProjectDetails.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Resources\Projects\Pages\ProjectIndex.Designer.cs">
+	    <DependentUpon>ProjectIndex.resx</DependentUpon>
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	  </Compile>
 	</ItemGroup>
 	<ItemGroup>
-	  <EmbeddedResource Update="Resources\Modules\ContactMenu.resx">
+	  <EmbeddedResource Update="Resources\Modules\ProjectMenu.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>ContactMenu.Designer.cs</LastGenOutput>
+	    <LastGenOutput>ProjectMenu.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\Contacts\Components\ContactAutocomplete.resx">
-	    <LastGenOutput>ContactAutocomplete.Designer.cs</LastGenOutput>
-	    <Generator>ResXFileCodeGenerator</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\Contacts\Components\ContactSummaryGrid.resx">
-	    <LastGenOutput>ContactSummaryGrid.Designer.cs</LastGenOutput>
+	  <EmbeddedResource Update="Resources\Projects\Components\ProjectAutocomplete.resx">
+	    <LastGenOutput>ProjectAutocomplete.Designer.cs</LastGenOutput>
 	    <Generator>ResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\Contacts\Pages\ContactAdd.resx">
-	    <LastGenOutput>ContactAdd.Designer.cs</LastGenOutput>
+	  <EmbeddedResource Update="Resources\Projects\Components\ProjectSummaryGrid.resx">
+	    <LastGenOutput>ProjectSummaryGrid.Designer.cs</LastGenOutput>
 	    <Generator>ResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\Contacts\Pages\ContactDetails.resx">
-	    <LastGenOutput>ContactDetails.Designer.cs</LastGenOutput>
+	  <EmbeddedResource Update="Resources\Projects\Pages\ProjectAdd.resx">
+	    <LastGenOutput>ProjectAdd.Designer.cs</LastGenOutput>
 	    <Generator>ResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\Contacts\Pages\ContactIndex.resx">
-	    <LastGenOutput>ContactIndex.Designer.cs</LastGenOutput>
+	  <EmbeddedResource Update="Resources\Projects\Pages\ProjectDetails.resx">
+	    <LastGenOutput>ProjectDetails.Designer.cs</LastGenOutput>
+	    <Generator>ResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Projects\Pages\ProjectIndex.resx">
+	    <LastGenOutput>ProjectIndex.Designer.cs</LastGenOutput>
 	    <Generator>ResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
 	</ItemGroup>

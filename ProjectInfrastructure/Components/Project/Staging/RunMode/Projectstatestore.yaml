@@ -1,7 +1,7 @@
 apiVersion: dapr.io/v1alpha1
 kind: Component
 metadata:
-  name: contactstatestore
+  name: projectstatestore
 spec:
   type: state.azure.cosmosdb
   version: v1
@@ -15,7 +15,7 @@ spec:
   - name: database
     value: staging
   - name: collection
-    value: contact
+    value: project
   - name: actorStateStore
     value: "true"
 auth:

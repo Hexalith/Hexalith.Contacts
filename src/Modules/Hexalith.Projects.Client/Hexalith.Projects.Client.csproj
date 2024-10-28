@@ -11,6 +11,6 @@
 		<PackageReference Include="Hexalith.Infrastructure.ClientAppOnWasm" Version="$(HexalithVersion)" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\Hexalith.Contacts.Shared\Hexalith.Contacts.Shared.csproj" />
+		<ProjectReference Include="..\Hexalith.Projects.Shared\Hexalith.Projects.Shared.csproj" />
 	</ItemGroup>
 </Project>

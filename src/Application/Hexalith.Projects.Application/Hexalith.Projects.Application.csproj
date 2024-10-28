@@ -9,7 +9,7 @@
 		<PackageReference Include="Hexalith.Application" Version="$(HexalithVersion)" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\Domain\Hexalith.Contacts.Domain\Hexalith.Contacts.Domain.csproj" />
-		<ProjectReference Include="..\Hexalith.Contacts.Commands\Hexalith.Contacts.Commands.csproj" />
+		<ProjectReference Include="..\..\Domain\Hexalith.Projects.Domain\Hexalith.Projects.Domain.csproj" />
+		<ProjectReference Include="..\Hexalith.Projects.Commands\Hexalith.Projects.Commands.csproj" />
 	</ItemGroup>
 </Project>

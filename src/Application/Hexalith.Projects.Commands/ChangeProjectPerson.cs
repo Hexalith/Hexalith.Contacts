@@ -1,10 +1,10 @@
-﻿namespace Hexalith.Contacts.Commands;
+﻿namespace Hexalith.Projects.Commands;
 
-using Hexalith.Contact.Domain.ValueObjects;
+using Hexalith.Project.Domain.ValueObjects;
 using Hexalith.PolymorphicSerialization;
 
 [PolymorphicSerialization]
-public partial record ChangeContactPerson(string Id, Person Person)
-    : ContactCommand(Id)
+public partial record ChangeProjectPerson(string Id, Person Person)
+    : ProjectCommand(Id)
 {
 }

@@ -1,6 +1,6 @@
 <svg width="1300" height="700" xmlns="http://www.w3.org/2000/svg">
-	<title>Contact straight element</title>
-	<desc>The contact straight element drawing.</desc>
+	<title>Project straight element</title>
+	<desc>The project straight element drawing.</desc>
 	<rect x="50" width="1200" height="700" style="fill:black" />
 	<rect x="150" width="1000" height="700" style="fill:white" />
 	<text x="650" y="350" font-family="Verdana" font-size="100" fill="blue" text-anchor="middle">1000x700</text>

@@ -1,7 +1,7 @@
-﻿namespace Hexalith.Contacts.Commands;
+﻿namespace Hexalith.Projects.Commands;
 /// <summary>
-/// Represents a contact disabled event.
+/// Represents a project disabled event.
 /// </summary>
-public partial record DisableContact(string Id) : ContactCommand(Id)
+public partial record DisableProject(string Id) : ProjectCommand(Id)
 {
 }

@@ -11,6 +11,6 @@
     <PackageReference Include="Hexalith.CodeGenerators.SerializationMappers" Version="$(HexalithVersion)" PrivateAssets="true" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\Hexalith.Contacts.Domain.Abstractions\Hexalith.Contacts.Domain.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Domain\Hexalith.Projects.Domain.Abstractions\Hexalith.Projects.Domain.Abstractions.csproj" />
   </ItemGroup>
 </Project>

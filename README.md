@@ -1,6 +1,6 @@
-# Hexalith Contacts
+# Hexalith Projects
 
-Hexalith Contacts is a domain-driven design (DDD) project for managing contact information. This project is structured to separate concerns and maintain a clear domain model.
+Hexalith Projects is a domain-driven design (DDD) project for managing project information. This project is structured to separate concerns and maintain a clear domain model.
 
 ## Project Structure
 
@@ -40,9 +40,9 @@ The `Gender` enum represents the possible gender values for a person:
 - Male
 - Other
 
-### ContactPointType
+### ProjectPointType
 
-The `ContactPointType` enum represents the various types of contact points:
+The `ProjectPointType` enum represents the various types of project points:
 
 - Phone
 - Email
@@ -50,12 +50,12 @@ The `ContactPointType` enum represents the various types of contact points:
 - SocialMedia
 - Other
 
-### ContactPoint
+### ProjectPoint
 
-The `ContactPoint` record represents a single point of contact for a person or entity, including:
+The `ProjectPoint` record represents a single point of project for a person or entity, including:
 
 - Name
-- PointType (of type ContactPointType)
+- PointType (of type ProjectPointType)
 - Value
 
 ## Documentation
@@ -74,16 +74,16 @@ We encourage all contributors to maintain and update this documentation as the p
 
 ## Getting Started
 
-To get started with the Hexalith Contacts project:
+To get started with the Hexalith Projects project:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/your-repo/hexalith-contacts.git
+   git clone https://github.com/your-repo/hexalith-projects.git
    ```
 
 2. Navigate to the project directory:
    ```
-   cd hexalith-contacts
+   cd hexalith-projects
    ```
 
 3. Restore the NuGet packages:
@@ -101,14 +101,14 @@ To get started with the Hexalith Contacts project:
    dotnet test
    ```
 
-6. Run the application (replace `Hexalith.Contacts.Server` with the appropriate startup project):
+6. Run the application (replace `Hexalith.Projects.Server` with the appropriate startup project):
    ```
-   dotnet run --project src/Modules/Hexalith.Contacts.Server
+   dotnet run --project src/Modules/Hexalith.Projects.Server
    ```
 
 ## Contributing
 
-We welcome contributions to the Hexalith Contacts project. Please read our [Contributing Guidelines](CONTRIBUTING.md) for details on how to submit pull requests, report issues, and suggest improvements. When contributing, please ensure that you maintain the existing documentation standards and update the relevant documentation for any changes you make.
+We welcome contributions to the Hexalith Projects project. Please read our [Contributing Guidelines](CONTRIBUTING.md) for details on how to submit pull requests, report issues, and suggest improvements. When contributing, please ensure that you maintain the existing documentation standards and update the relevant documentation for any changes you make.
 
 ## License
 
@@ -116,4 +116,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-If you encounter any issues or have questions about the project, please [open an issue](https://github.com/your-repo/hexalith-contacts/issues) on GitHub.
+If you encounter any issues or have questions about the project, please [open an issue](https://github.com/your-repo/hexalith-projects/issues) on GitHub.

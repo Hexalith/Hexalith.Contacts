@@ -26,9 +26,9 @@ app.Builder.Configuration.AddUserSecrets<Program>();
 if (app.IsProjectEnabled<Projects.HexalithApp_Server>())
 {
     _ = app
-        .AddProject<Projects.HexalithApp_Server>("contact")
+        .AddProject<Projects.HexalithApp_Server>("project")
         .WithEnvironment("Hexalith__EasyAuthentication__Enabled", "true")
-        .WithOrganization("STRADAL", "FR", "ContactApp");
+        .WithOrganization("STRADAL", "FR", "ProjectApp");
 }
 
 await app

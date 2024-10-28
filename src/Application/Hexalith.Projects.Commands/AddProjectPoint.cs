@@ -1,10 +1,10 @@
-﻿namespace Hexalith.Contacts.Commands;
+﻿namespace Hexalith.Projects.Commands;
 
-using Hexalith.Contact.Domain.ValueObjects;
+using Hexalith.Project.Domain.ValueObjects;
 using Hexalith.PolymorphicSerialization;
 
 [PolymorphicSerialization]
-public partial record AddContactPoint(string Id, ContactPoint ContactPoint)
-    : ContactCommand(Id)
+public partial record AddProjectPoint(string Id, ProjectPoint ProjectPoint)
+    : ProjectCommand(Id)
 {
 }

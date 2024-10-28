@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hexalith.Contacts.Shared.Resources.Modules {
+namespace Hexalith.Projects.Shared.Resources.Modules {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Hexalith.Contacts.Shared.Resources.Modules {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ContactMenu {
+    internal class ProjectMenu {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ContactMenu() {
+        internal ProjectMenu() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Hexalith.Contacts.Shared.Resources.Modules {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hexalith.Contacts.Shared.Resources.Modules.ContactMenu", typeof(ContactMenu).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hexalith.Projects.Shared.Resources.Modules.ProjectMenu", typeof(ProjectMenu).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,11 @@ namespace Hexalith.Contacts.Shared.Resources.Modules {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contact.
+        ///   Looks up a localized string similar to Project.
         /// </summary>
-        internal static string ContactMenuItem {
+        internal static string ProjectMenuItem {
             get {
-                return ResourceManager.GetString("ContactMenuItem", resourceCulture);
+                return ResourceManager.GetString("ProjectMenuItem", resourceCulture);
             }
         }
     }

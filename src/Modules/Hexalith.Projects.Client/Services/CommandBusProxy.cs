@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Contacts.Client.Services;
+namespace Hexalith.Projects.Client.Services;
 
 using System.Net.Http.Json;
 

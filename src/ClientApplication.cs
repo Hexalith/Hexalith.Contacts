@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 
 using Hexalith.Application.Modules.Applications;
-using Hexalith.Contacts.Client.Modules;
+using Hexalith.Projects.Client.Modules;
 using Hexalith.EasyAuthentication.Client;
 
 using HexalithApp.Shared;
@@ -22,7 +22,7 @@ public class ClientApplication : HexalithClientApplication
     /// <inheritdoc/>
     public override IEnumerable<Type> ClientModules
         => [
-            typeof(ContactClientModule),
+            typeof(ProjectClientModule),
             typeof(HexalithEasyAuthenticationClientModule)];
 
     /// <inheritdoc/>

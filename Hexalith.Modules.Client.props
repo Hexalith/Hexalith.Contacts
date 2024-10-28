@@ -11,6 +11,6 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Include="$(MSBuildThisFileDirectory)src/ClientApplication.cs" />
-		<ProjectReference Include="$(HexalithContactPath)\src\Modules\Hexalith.Contacts.Client\Hexalith.Contacts.Client.csproj" />
+		<ProjectReference Include="$(HexalithProjectPath)\src\Modules\Hexalith.Projects.Client\Hexalith.Projects.Client.csproj" />
 	</ItemGroup>
 </Project>

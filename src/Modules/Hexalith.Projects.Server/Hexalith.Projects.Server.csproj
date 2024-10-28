@@ -15,9 +15,9 @@
 		<PackageReference Include="Hexalith.Infrastructure.DaprRuntime" Version="$(HexalithVersion)" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Domain\Hexalith.Contacts.Domain.Abstractions\Hexalith.Contacts.Domain.Abstractions.csproj" />
-	  <ProjectReference Include="..\..\Domain\Hexalith.Contacts.Domain\Hexalith.Contacts.Domain.csproj" />
-	  <ProjectReference Include="..\Hexalith.Contacts.Shared\Hexalith.Contacts.Shared.csproj" />
+	  <ProjectReference Include="..\..\Domain\Hexalith.Projects.Domain.Abstractions\Hexalith.Projects.Domain.Abstractions.csproj" />
+	  <ProjectReference Include="..\..\Domain\Hexalith.Projects.Domain\Hexalith.Projects.Domain.csproj" />
+	  <ProjectReference Include="..\Hexalith.Projects.Shared\Hexalith.Projects.Shared.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Infrastructure\Services\" />

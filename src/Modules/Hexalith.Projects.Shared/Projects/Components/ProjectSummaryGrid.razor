@@ -1,7 +1,7 @@
-﻿@inject Services.IContactQueryService ContactQueryService;
-@inject IStringLocalizer<ContactSummaryGrid> L;
+﻿@inject Services.IProjectQueryService ProjectQueryService;
+@inject IStringLocalizer<ProjectSummaryGrid> L;
 @inject NavigationManager NavigationManager;
-@using Labels = Resources.Contacts.Components.ContactSummaryGrid
+@using Labels = Resources.Projects.Components.ProjectSummaryGrid
 
 @if (elements is not null)
 {
@@ -9,7 +9,7 @@
 					Items="@elements"
 					ResizableColumns="true"
 					ShowHover="true"
-					OnRowDoubleClick="@((FluentDataGridRow<ViewModels.ContactSummary> row) => HandleRowDoubleClick(row))">
+					OnRowDoubleClick="@((FluentDataGridRow<ViewModels.ProjectSummary> row) => HandleRowDoubleClick(row))">
 		<PropertyColumn Title="@Labels.Id" Property="@(p => p.Id)" Sortable="true" />
 		<PropertyColumn Title="@Labels.Name" Property="@(p => p.Name)" Sortable="true" />
 		<PropertyColumn Title="@Labels.Phone" Property="@(p => p.Phone)" Sortable="true" />
@@ -24,13 +24,13 @@
 @code {
 	protected override async Task OnInitializedAsync()
 	{
-		elements = (await ContactQueryService.GetSummariesAsync()).AsQueryable();
+		elements = (await ProjectQueryService.GetSummariesAsync()).AsQueryable();
 	}
-	IQueryable<ViewModels.ContactSummary>? elements = null;
-	private Task HandleRowDoubleClick(FluentDataGridRow<ViewModels.ContactSummary> row)
+	IQueryable<ViewModels.ProjectSummary>? elements = null;
+	private Task HandleRowDoubleClick(FluentDataGridRow<ViewModels.ProjectSummary> row)
 	{
 		if (row.Item is not null && !string.IsNullOrEmpty(row.Item.Id))
-			NavigationManager.NavigateTo($"/Contact/Contact/{row.Item.Id}");
+			NavigationManager.NavigateTo($"/Project/Project/{row.Item.Id}");
 		return Task.CompletedTask;
 	}
 }

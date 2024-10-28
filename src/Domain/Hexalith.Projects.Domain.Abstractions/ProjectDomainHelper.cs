@@ -1,17 +1,17 @@
-﻿namespace Hexalith.Contact.Domain;
+﻿namespace Hexalith.Project.Domain;
 
 /// <summary>
-/// Helper class for the Contact domain.
+/// Helper class for the Project domain.
 /// </summary>
-[System.Diagnostics.CodeAnalysis.SuppressMessage(
-    "Critical Code Smell",
-    "S2339:Public constant members should not be used",
-    Justification = "Const values are needed for attributes")]
-public static class ContactDomainHelper
+public static class ProjectDomainHelper
 {
     /// <summary>
-    /// The name of the contact aggregate.
+    /// The name of the project aggregate.
     /// </summary>
-    public const string ContactAggregateName = "Contact";
+    public const string ProjectAggregateName = "Project";
 
+    /// <summary>
+    /// The name of the project type aggregate.
+    /// </summary>
+    public const string ProjectTypeAggregateName = "ProjectType";
 }

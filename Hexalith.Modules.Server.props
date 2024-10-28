@@ -11,7 +11,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Include="$(MSBuildThisFileDirectory)src/ServerApplication.cs" />
-		<ProjectReference Include="$(HexalithContactPath)\src\Modules\Hexalith.Contacts.Client\Hexalith.Contacts.Client.csproj" />
-		<ProjectReference Include="$(HexalithContactPath)\src\Modules\Hexalith.Contacts.Server\Hexalith.Contacts.Server.csproj" />
+		<ProjectReference Include="$(HexalithProjectPath)\src\Modules\Hexalith.Projects.Client\Hexalith.Projects.Client.csproj" />
+		<ProjectReference Include="$(HexalithProjectPath)\src\Modules\Hexalith.Projects.Server\Hexalith.Projects.Server.csproj" />
 	</ItemGroup>
 </Project>

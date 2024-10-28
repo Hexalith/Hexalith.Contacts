@@ -1,4 +1,4 @@
-﻿namespace Hexalith.Contacts.Shared.Modules.Icons;
+﻿namespace Hexalith.Projects.Shared.Modules.Icons;
 
 using Hexalith.UI.Components.Icons;
 
@@ -14,7 +14,7 @@ public record FontAwesomeIcon : IconInformation
     /// <param name="size">The size of the icon.</param>
     /// <param name="style">The style of the icon.</param>
     public FontAwesomeIcon(string name, int size, IconStyle style)
-        : base(name, size, style, IconSource.FontAwesome, $"{nameof(Contact)}.{nameof(Shared)}")
+        : base(name, size, style, IconSource.FontAwesome, $"{nameof(Project)}.{nameof(Shared)}")
     {
     }
 

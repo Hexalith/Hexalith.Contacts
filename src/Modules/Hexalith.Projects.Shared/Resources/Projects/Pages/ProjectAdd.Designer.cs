@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hexalith.Contacts.Shared.Resources.Contacts.Pages {
+namespace Hexalith.Projects.Shared.Resources.Projects.Pages {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Hexalith.Contacts.Shared.Resources.Contacts.Pages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ContactAdd {
+    internal class ProjectAdd {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ContactAdd() {
+        internal ProjectAdd() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Hexalith.Contacts.Shared.Resources.Contacts.Pages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hexalith.Contacts.Shared.Resources.Contacts.Pages.ContactAdd", typeof(ContactAdd).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hexalith.Projects.Shared.Resources.Projects.Pages.ProjectAdd", typeof(ProjectAdd).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -142,7 +142,7 @@ namespace Hexalith.Contacts.Shared.Resources.Contacts.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add a contact.
+        ///   Looks up a localized string similar to Add a project.
         /// </summary>
         internal static string Title {
             get {

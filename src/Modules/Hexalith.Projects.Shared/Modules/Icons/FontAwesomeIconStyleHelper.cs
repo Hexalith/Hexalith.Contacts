@@ -1,4 +1,4 @@
-﻿namespace Hexalith.Contacts.Shared.Modules.Icons;
+﻿namespace Hexalith.Projects.Shared.Modules.Icons;
 
 using System.Diagnostics.CodeAnalysis;
 

@@ -11,7 +11,7 @@
 		<HexalithVersion Condition="'$(HexalithVersion)' == ''">1.*</HexalithVersion>
 		<HexalithAppPath Condition="'$(HexalithAppPath)' == ''">$(MSBuildThisFileDirectory)Hexalith.App\</HexalithAppPath>
 		<HexalithAppVersion Condition="'$(HexalithAppVersion)' == ''">*</HexalithAppVersion>
-		<HexalithContactPath Condition="'$(HexalithContactPath)' == ''">$(MSBuildThisFileDirectory)</HexalithContactPath>
-		<HexalithContactVersion Condition="'$(HexalithContactVersion)' == ''">*</HexalithContactVersion>
+		<HexalithProjectPath Condition="'$(HexalithProjectPath)' == ''">$(MSBuildThisFileDirectory)</HexalithProjectPath>
+		<HexalithProjectVersion Condition="'$(HexalithProjectVersion)' == ''">*</HexalithProjectVersion>
 	</PropertyGroup>
 </Project>

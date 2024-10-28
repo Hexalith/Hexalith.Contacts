@@ -1,4 +1,4 @@
-﻿namespace Hexalith.Contacts.Application.CommandHandlers;
+﻿namespace Hexalith.Projects.Application.CommandHandlers;
 
 using System;
 using System.Text.Json;
