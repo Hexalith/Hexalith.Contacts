@@ -1,4 +1,4 @@
-﻿namespace Hexalith.Projects.Domain;
+﻿namespace Hexalith.Projects.Domain.ProjectTypes;
 
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;

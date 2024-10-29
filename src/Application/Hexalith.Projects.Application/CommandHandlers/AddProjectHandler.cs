@@ -3,9 +3,9 @@
 using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
 using Hexalith.Projects.Commands;
-using Hexalith.Projects.Domain;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Projects.Events.Projects;
+using Hexalith.Projects.Domain.Projects;
 
 /// <summary>
 /// Command handler for adding a new factory.

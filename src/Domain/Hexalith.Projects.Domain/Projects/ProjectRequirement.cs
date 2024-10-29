@@ -1,4 +1,4 @@
-﻿namespace Hexalith.Project.Domain.ValueObjects;
+﻿namespace Hexalith.Projects.Domain.Projects;
 
 using System;
 using System.Runtime.Serialization;
@@ -36,7 +36,7 @@ public record ProjectRequirement(
     /// <summary>
     /// Gets the optional identifier of the associated document.
     /// </summary>
-    [property: DataMember(Order = 6)] string? DocumentId,
+    [property: DataMember(Order = 6)] IEnumerable<string> DocumentIds,
 
     /// <summary>
     /// Gets the optional expected completion date for this requirement.

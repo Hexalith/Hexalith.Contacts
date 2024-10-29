@@ -7,7 +7,6 @@ using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Modules.Modules;
 using Hexalith.Project.Domain;
-using Hexalith.Projects.Domain;
 using Hexalith.Projects.Server.Application.Helpers;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
@@ -15,6 +14,7 @@ using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Hexalith.Projects.Domain.Projects;
 
 /// <summary>
 /// The project construction site client module.

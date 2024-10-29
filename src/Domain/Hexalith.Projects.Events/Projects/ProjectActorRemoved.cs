@@ -3,7 +3,7 @@
 using Hexalith.PolymorphicSerialization;
 
 [PolymorphicSerialization]
-public partial record ProjectContributorRemoved(string Id, string ContactId)
+public partial record ProjectActorRemoved(string Id, string ContactId)
     : ProjectEvent(Id)
 {
 }

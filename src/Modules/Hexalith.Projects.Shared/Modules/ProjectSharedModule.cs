@@ -10,7 +10,7 @@ using Hexalith.Application.Modules.Modules;
 using Hexalith.Projects.Application.CommandHandlers;
 using Hexalith.Projects.Commands;
 using Hexalith.Projects.Commands.Extensions;
-using Hexalith.Projects.Domain;
+using Hexalith.Projects.Domain.Projects;
 using Hexalith.Projects.Events.Extensions;
 using Hexalith.Projects.Shared.Projects.Services;
 using Hexalith.UI.Components;
